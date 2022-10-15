@@ -40,7 +40,7 @@ export class ComicService {
     );
   }
 
-  fetchComics() {
+  getLastComic() {
     //const header = new HttpHeaders()
     //.set('Access-Control-Allow-Origin', '*')
     //.set('Content-Type', 'application/json')
@@ -61,6 +61,32 @@ export class ComicService {
     return this.http
       .get(
         'https://the-ultimate-api-challenge.herokuapp.com/https://xkcd.com/info.0.json',
+        {
+          headers: header,
+        }
+      )
+      .pipe(
+        retry(3), // retry a failed request up to 3 times
+        catchError(this.handleError) // then handle the error
+      );
+  }
+
+  getComicsByNumber(id: number) {
+    let header = new HttpHeaders();
+    header = header.append('Access-Control-Allow-Origin', '*');
+    header = header.append('Content-Type', 'application/json');
+    header = header.append(
+      'Access-Control-Allow-Methods',
+      'GET, PUT, DELETE ,POST'
+    );
+    header = header.append('Access-Control-Allow-Credentials', 'true');
+    header = header.append('Access-Control-Allow-Headers', 'Content-Type');
+
+    return this.http
+      .get(
+        'https://the-ultimate-api-challenge.herokuapp.com/https://xkcd.com/' +
+          id.toString() +
+          '/info.0.json',
         {
           headers: header,
         }
