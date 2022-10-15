@@ -40,7 +40,7 @@ export class ComicService {
     );
   }
 
-  getLastComic() {
+  getComics() {
     //const header = new HttpHeaders()
     //.set('Access-Control-Allow-Origin', '*')
     //.set('Content-Type', 'application/json')

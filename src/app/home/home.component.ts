@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
   }
 
   fetchComics() {
-    this.comicService.getLastComic().subscribe((res: any) => {
+    this.comicService.getComics().subscribe((res: any) => {
       this.comic = res;
       this.lastComicId = res.num;
       this.comicNumber = res.num;
@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit {
   }
 
   getLastComic() {
-    this.comicService.getLastComic().subscribe((res: any) => {
+    this.comicService.getComics().subscribe((res: any) => {
       this.comic = res;
       console.log(res);
       this.comicNumber = res.num;
@@ -53,13 +53,16 @@ export class HomeComponent implements OnInit {
   }
 
   getPreviousComic(number: number) {
-    if (this.comicNumber !== null) {
+    if (this.comicNumber !== null && this.comicNumber > 1) {
       number = this.comicNumber - 1;
       this.comicNumber = number;
       this.comicService.getComicsByNumber(number).subscribe((res: any) => {
         this.comic = res;
+
         this.warning = '';
       });
+    } else {
+      this.warning = 'Sorry, this is the first comic!!!';
     }
   }
 
@@ -74,5 +77,13 @@ export class HomeComponent implements OnInit {
     } else {
       this.warning = 'Sorry, this is the last comic!!!';
     }
+  }
+  getComicsByRandomNumber() {
+    let randomNumber = Math.floor(Math.random() * this.lastComicId) + 1;
+    console.log(randomNumber);
+    this.comicService.getComicsByNumber(randomNumber).subscribe((res: any) => {
+      this.comic = res;
+      this.comicNumber = randomNumber;
+    });
   }
 }
