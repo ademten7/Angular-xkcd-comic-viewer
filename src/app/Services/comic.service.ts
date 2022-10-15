@@ -58,9 +58,9 @@ export class ComicService {
     header = header.append('Access-Control-Allow-Credentials', 'true');
     header = header.append('Access-Control-Allow-Headers', 'Content-Type');
 
-    this.http
+    return this.http
       .get(
-        'https://the-ultimate-api-challenge.herokuapp.com/https://xkcd.com/614/info.0.json',
+        'https://the-ultimate-api-challenge.herokuapp.com/https://xkcd.com/info.0.json',
         {
           headers: header,
         }
@@ -68,9 +68,6 @@ export class ComicService {
       .pipe(
         retry(3), // retry a failed request up to 3 times
         catchError(this.handleError) // then handle the error
-      )
-      .subscribe((res: any) => {
-        console.log(res);
-      });
+      );
   }
 }

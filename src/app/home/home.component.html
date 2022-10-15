@@ -1,1 +1,37 @@
-<p>home works!</p>
+<div class="container">
+  <div class="container-header">
+    <h2 class="title">{{ comic.title }}</h2>
+    <div class="image">
+      <img [src]="comic.img" alt="comic" />
+    </div>
+    <div>
+      <h4>{{ comic.alt }}</h4>
+    </div>
+    <div class="buttons-container">
+      <button type="button" class="btn btn-secondary">
+        <i class="bi bi-chevron-double-left"></i> First
+      </button>
+      <button type="button" class="btn btn-secondary">
+        <i class="bi bi-chevron-bar-left"></i> Prev
+      </button>
+      <button type="button" class="btn btn-secondary">
+        Random <i class="bi bi-shuffle"></i>
+      </button>
+      <button type="button" class="btn btn-secondary">
+        Next <i class="bi bi-chevron-bar-right"></i>
+      </button>
+      <button type="button" class="btn btn-secondary">
+        Last <i class="bi bi-chevron-double-right"></i>
+      </button>
+    </div>
+    <div class="input-id">
+      <h3>Search Comics by ID</h3>
+      <input
+        type="text"
+        placeholder="Please enter a comic number"
+        name="entredId"
+      />
+      <button class="btn btn-secondary">Get Comic</button>
+    </div>
+  </div>
+</div>

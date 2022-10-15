@@ -1,0 +1,14 @@
+.container-header {
+  margin-top: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttons-container button {
+  margin-right: 5px;
+}
+.input-id {
+  margin-top: 1em;
+}
