@@ -5,12 +5,16 @@ import {
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, retry, throwError } from 'rxjs';
+import { Comic } from '../model/comic';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ComicService {
   constructor(private http: HttpClient) {}
+
+  allComicFavorites: Comic[] = [];
+
   /*
   comics = [
     {

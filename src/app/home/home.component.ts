@@ -13,6 +13,8 @@ export class HomeComponent implements OnInit {
   comicNumber: number;
   lastComicId: number;
   warning: string = '';
+  favoritesWarning: string = '';
+  favorites: Comic[] = [];
 
   ngOnInit(): void {
     this.fetchComics();
@@ -29,6 +31,7 @@ export class HomeComponent implements OnInit {
   }
 
   getComicsById(id: number) {
+    this.favoritesWarning = '';
     this.comicService.getComicsByNumber(id).subscribe((res: any) => {
       this.comic = res;
       //console.log(res);
@@ -36,6 +39,7 @@ export class HomeComponent implements OnInit {
   }
 
   getFirstComic(number: number) {
+    this.favoritesWarning = '';
     this.comicNumber = number;
     this.comicService.getComicsByNumber(number).subscribe((res: any) => {
       this.comic = res;
@@ -45,6 +49,7 @@ export class HomeComponent implements OnInit {
 
   getLastComic() {
     this.comicService.getComics().subscribe((res: any) => {
+      this.favoritesWarning = '';
       this.comic = res;
       console.log(res);
       this.comicNumber = res.num;
@@ -53,6 +58,7 @@ export class HomeComponent implements OnInit {
   }
 
   getPreviousComic(number: number) {
+    this.favoritesWarning = '';
     if (this.comicNumber !== null && this.comicNumber > 1) {
       number = this.comicNumber - 1;
       this.comicNumber = number;
@@ -67,6 +73,7 @@ export class HomeComponent implements OnInit {
   }
 
   getNextComic(number: number) {
+    this.favoritesWarning = '';
     if (this.comicNumber !== null && this.comicNumber !== this.lastComicId) {
       number = this.comicNumber + 1;
       this.comicNumber = number;
@@ -79,11 +86,27 @@ export class HomeComponent implements OnInit {
     }
   }
   getComicsByRandomNumber() {
+    this.favoritesWarning = '';
     let randomNumber = Math.floor(Math.random() * this.lastComicId) + 1;
     console.log(randomNumber);
     this.comicService.getComicsByNumber(randomNumber).subscribe((res: any) => {
       this.comic = res;
       this.comicNumber = randomNumber;
     });
+    this.warning = '';
+  }
+
+  addFavorites(comic: Comic) {
+    let newComic = this.comicService.allComicFavorites.find(
+      (item) => item.num === comic.num
+    );
+    if (!newComic) {
+      this.comicService.allComicFavorites.push(comic);
+      console.log(this.comicService.allComicFavorites);
+      this.favoritesWarning = '';
+    } else {
+      this.favoritesWarning =
+        'This comic have already added in the favorite list';
+    }
   }
 }

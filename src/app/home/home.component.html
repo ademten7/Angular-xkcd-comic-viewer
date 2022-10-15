@@ -5,57 +5,75 @@
     <div class="image">
       <img [src]="comic.img" alt="comic" />
     </div>
+    <div class="buttons-favorites">
+      <button
+        (click)="addFavorites(comic)"
+        type="button"
+        class="btn btn-secondary add-favorites"
+      >
+        Add Favorites <i class="bi bi-heart"></i>
+      </button>
+    </div>
+    <div *ngIf="favoritesWarning" class="warning">
+      <p>{{ favoritesWarning }}</p>
+    </div>
     <div>
       <h4>{{ comic.alt }}</h4>
     </div>
-    <div class="buttons-container">
-      <button
-        (click)="getFirstComic(1)"
-        type="button"
-        class="btn btn-secondary"
-      >
-        <i class="bi bi-chevron-double-left"></i> First
-      </button>
-      <button
-        (click)="getPreviousComic(comicNumber)"
-        getPreviousComic
-        type="button"
-        class="btn btn-secondary"
-      >
-        <i class="bi bi-chevron-bar-left"></i> Prev
-      </button>
-      <button
-        (click)="getComicsByRandomNumber()"
-        type="button"
-        class="btn btn-secondary"
-      >
-        Random <i class="bi bi-shuffle"></i>
-      </button>
-      <button
-        (click)="getNextComic(comicNumber)"
-        type="button"
-        class="btn btn-secondary"
-      >
-        Next <i class="bi bi-chevron-bar-right"></i>
-      </button>
-      <button (click)="getLastComic()" type="button" class="btn btn-secondary">
-        Last <i class="bi bi-chevron-double-right"></i>
-      </button>
-    </div>
-    <div *ngIf="warning" class="warning">
-      <p>{{ warning }}</p>
-    </div>
-    <div class="input-id">
-      <h3>Search Comics by ID</h3>
-      <input
-        type="text"
-        placeholder="Please enter a comic number"
-        name="entredId"
-        [(ngModel)]="comicNumber"
-      />
-      <button (click)="getComicsById(comicNumber)" class="btn btn-secondary">
-        Get Comic
-      </button>
+    <div>
+      <div class="buttons-container">
+        <button
+          (click)="getFirstComic(1)"
+          type="button"
+          class="btn btn-secondary"
+        >
+          <i class="bi bi-chevron-double-left"></i> First
+        </button>
+        <button
+          (click)="getPreviousComic(comicNumber)"
+          getPreviousComic
+          type="button"
+          class="btn btn-secondary"
+        >
+          <i class="bi bi-chevron-bar-left"></i> Prev
+        </button>
+        <button
+          (click)="getComicsByRandomNumber()"
+          type="button"
+          class="btn btn-secondary"
+        >
+          Random <i class="bi bi-shuffle"></i>
+        </button>
+        <button
+          (click)="getNextComic(comicNumber)"
+          type="button"
+          class="btn btn-secondary"
+        >
+          Next <i class="bi bi-chevron-bar-right"></i>
+        </button>
+        <button
+          (click)="getLastComic()"
+          type="button"
+          class="btn btn-secondary"
+        >
+          Last <i class="bi bi-chevron-double-right"></i>
+        </button>
+      </div>
+      <div *ngIf="warning" class="warning">
+        <p>{{ warning }}</p>
+      </div>
+      <div class="input-id">
+        <h3>Search Comics by ID</h3>
+        <input
+          type="text"
+          placeholder="Please enter a comic number"
+          name="entredId"
+          [(ngModel)]="comicNumber"
+        />
+        <button (click)="getComicsById(comicNumber)" class="btn btn-secondary">
+          Get Comic
+        </button>
+      </div>
     </div>
   </div>
 </div>
