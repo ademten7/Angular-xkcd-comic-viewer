@@ -1,0 +1,7 @@
+{
+  "/api/*": {
+    "target": "https://xkcd.com/info.0.json",
+    "secure": false,
+    "logLevel": "debug"
+  }
+}
