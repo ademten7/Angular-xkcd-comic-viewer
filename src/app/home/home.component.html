@@ -64,15 +64,20 @@
       </div>
       <div class="input-id">
         <h3>Search Comics by ID</h3>
-        <input
-          type="text"
-          placeholder="Please enter a comic number"
-          name="entredId"
-          [(ngModel)]="comicNumber"
-        />
-        <button (click)="getComicsById(comicNumber)" class="btn btn-secondary">
-          Get Comic
-        </button>
+        <div>
+          <input
+            type="text"
+            placeholder="Please enter a comic number"
+            name="entredId"
+            [(ngModel)]="comicNumber"
+          />
+          <button
+            (click)="getComicsById(comicNumber)"
+            class="btn btn-secondary"
+          >
+            Get Comic
+          </button>
+        </div>
       </div>
     </div>
   </div>
