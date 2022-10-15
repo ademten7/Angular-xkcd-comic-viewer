@@ -11,6 +11,16 @@ import { catchError, retry, throwError } from 'rxjs';
 })
 export class ComicService {
   constructor(private http: HttpClient) {}
+  /*
+  comics = [
+    {
+      num: 2685,
+      alt: '"Sorry, doctor, I\'m going to have to come in on a different day--I have another appointment that would be really hard to move, in terms of the kinetic energy requirements."',
+      img: 'https://imgs.xkcd.com/comics/2045.png',
+      title: '2045',
+    },
+  ];
+  */
 
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
@@ -31,18 +41,30 @@ export class ComicService {
   }
 
   fetchComics() {
-    const header = new HttpHeaders()
-      .set('Content-Type', 'application/json')
-      .set('Access-Control-Allow-Origin', '*')
-      .set('Access-Control-Allow-Methods', 'GET,HEAD,POST')
-      .set('Access-Control-Allow-Credentials', 'true')
-      .set('Access-Control-Allow-Headers', 'Content-Type');
+    //const header = new HttpHeaders()
+    //.set('Access-Control-Allow-Origin', '*')
+    //.set('Content-Type', 'application/json')
+    //.set('Access-Control-Allow-Methods', 'GET, PUT, DELETE ,POST')
+    //.set('Access-Control-Allow-Credentials', 'true')
+    // .set('Access-Control-Allow-Headers', 'Content-Type');
+
+    let header = new HttpHeaders();
+    header = header.append('Access-Control-Allow-Origin', '*');
+    header = header.append('Content-Type', 'application/json');
+    header = header.append(
+      'Access-Control-Allow-Methods',
+      'GET, PUT, DELETE ,POST'
+    );
+    header = header.append('Access-Control-Allow-Credentials', 'true');
+    header = header.append('Access-Control-Allow-Headers', 'Content-Type');
 
     this.http
-      .get('https://jsonplaceholder.typicode.com/posts', {
-        //.get('https://xkcd.com/info.0.json', {
-        headers: header,
-      })
+      .get(
+        'https://the-ultimate-api-challenge.herokuapp.com/https://xkcd.com/614/info.0.json',
+        {
+          headers: header,
+        }
+      )
       .pipe(
         retry(3), // retry a failed request up to 3 times
         catchError(this.handleError) // then handle the error
