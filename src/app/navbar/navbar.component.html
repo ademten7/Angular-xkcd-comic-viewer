@@ -1,13 +1,20 @@
 <div class="container">
   <h1>XKCD Comics Viewer</h1>
-  <button routerLink="home" routerLinkActive="active" class="btn btn-secondary">
-    Go Comics <i class="bi bi-house-fill"></i>
-  </button>
-  <button
-    routerLink="favorites"
-    routerLinkActive="active"
-    class="btn btn-secondary favorites-button"
-  >
-    My Favorites <span class="total-favorites">{{ getTotalFavorites() }}</span>
-  </button>
+  <div>
+    <button
+      routerLink="home"
+      routerLinkActive="active"
+      class="btn btn-secondary"
+    >
+      Go Comics <i class="bi bi-house-fill"></i>
+    </button>
+    <button
+      routerLink="favorites"
+      routerLinkActive="active"
+      class="btn btn-secondary favorites-button"
+    >
+      My Favorites
+      <span class="total-favorites">{{ getTotalFavorites() }}</span>
+    </button>
+  </div>
 </div>

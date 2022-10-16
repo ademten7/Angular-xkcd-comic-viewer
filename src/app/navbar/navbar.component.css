@@ -9,6 +9,7 @@
 .container .favorites-button {
   position: relative;
   padding-right: 30px;
+  margin-left: 20px;
 }
 .total-favorites {
   position: absolute;
