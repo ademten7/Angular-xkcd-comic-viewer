@@ -10,6 +10,7 @@ import { FavoritesComponent } from './favorites/favorites.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { ComicService } from './Services/comic.service';
+import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { ComicService } from './Services/comic.service';
     FavoritesComponent,
     NavbarComponent,
     HomeComponent,
+    NotFoundPageComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [ComicService],
