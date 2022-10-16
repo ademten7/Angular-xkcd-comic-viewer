@@ -72,18 +72,15 @@
       <div class="input-id">
         <h3>Search Comics by ID</h3>
         <div>
-          <input
-            type="text"
-            placeholder="Please enter a comic number"
-            name="entredId"
-            [(ngModel)]="comicNumber"
-          />
-          <button
-            (click)="getComicsById(comicNumber)"
-            class="btn btn-secondary"
-          >
-            Get Comic
-          </button>
+          <form (ngSubmit)="getComicsById(myForm)" #myForm="ngForm">
+            <input
+              type="text"
+              placeholder="Please enter a comic number"
+              name="entredId"
+              ngModel
+            />
+            <input type="submit" value="Get Comic" class="btn btn-secondary" />
+          </form>
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ComicService } from '../Services/comic.service';
 import { Comic } from '../model/comic';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +18,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchComics();
-    this.getComicsById(this.comicNumber);
   }
 
   fetchComics() {
@@ -29,12 +29,16 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  getComicsById(id: number) {
+  getComicsById(myForm: NgForm) {
+    this.comicNumber = Number(myForm.control.value.entredId);
     this.favoritesWarning = '';
-    this.comicService.getComicsByNumber(id).subscribe((res: any) => {
-      this.comic = res;
-      //console.log(res);
-    });
+    this.comicService
+      .getComicsByNumber(this.comicNumber)
+      .subscribe((res: any) => {
+        this.comic = res;
+        //console.log(res);
+      });
+    myForm.reset();
   }
 
   getFirstComic(number: number) {

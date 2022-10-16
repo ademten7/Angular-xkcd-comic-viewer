@@ -1,3 +1,6 @@
+.container {
+  margin-bottom: 2em;
+}
 .container-header {
   margin-top: 2em;
   display: flex;
