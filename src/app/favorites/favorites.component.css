@@ -11,6 +11,9 @@
   justify-content: space-around;
   align-items: center;
 }
+button {
+  max-height: 35px;
+}
 
 h2 {
   font-size: 30px;

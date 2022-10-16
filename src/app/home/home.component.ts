@@ -14,7 +14,6 @@ export class HomeComponent implements OnInit {
   lastComicId: number;
   warning: string = '';
   favoritesWarning: string = '';
-  favorites: Comic[] = [];
 
   ngOnInit(): void {
     this.fetchComics();
@@ -106,7 +105,13 @@ export class HomeComponent implements OnInit {
       this.favoritesWarning = '';
     } else {
       this.favoritesWarning =
-        'This comic have already added in the favorite list';
+        'This comic has already been added in the favorite list';
     }
+  }
+  removeFavorite(id: number) {
+    let newFavoriteComics = this.comicService.allComicFavorites.filter(
+      (comic: Comic) => comic.num !== id
+    );
+    this.comicService.allComicFavorites = newFavoriteComics;
   }
 }

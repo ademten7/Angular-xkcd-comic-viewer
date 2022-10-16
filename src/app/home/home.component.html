@@ -13,6 +13,13 @@
       >
         Add Favorites <i class="bi bi-heart"></i>
       </button>
+      <button
+        (click)="removeFavorite(comic.num)"
+        type="button"
+        class="btn btn-secondary add-favorites"
+      >
+        Remove <i class="bi bi-trash-fill"></i>
+      </button>
     </div>
     <div *ngIf="favoritesWarning" class="warning">
       <p>{{ favoritesWarning }}</p>
