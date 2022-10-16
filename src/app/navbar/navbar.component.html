@@ -6,8 +6,8 @@
   <button
     routerLink="favorites"
     routerLinkActive="active"
-    class="btn btn-secondary"
+    class="btn btn-secondary favorites-button"
   >
-    My Favorites <i class="bi bi-heart"></i>
+    My Favorites <span class="total-favorites">{{ getTotalFavorites() }}</span>
   </button>
 </div>

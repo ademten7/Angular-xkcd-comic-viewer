@@ -6,3 +6,15 @@
 .btn-secondary:not(:disabled).active {
   border-bottom: 2.5px solid red;
 }
+.container .favorites-button {
+  position: relative;
+  padding-right: 30px;
+}
+.total-favorites {
+  position: absolute;
+  background-color: rgb(216, 9, 9);
+  padding: 0px 5px;
+  top: 0;
+  right: 0;
+  border-radius: 5px;
+}

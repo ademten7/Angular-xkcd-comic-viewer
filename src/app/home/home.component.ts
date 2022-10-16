@@ -112,10 +112,17 @@ export class HomeComponent implements OnInit {
         'This comic has already been added in the favorite list';
     }
   }
-  removeFavorite(id: number) {
-    let newFavoriteComics = this.comicService.allComicFavorites.filter(
-      (comic: Comic) => comic.num !== id
+  removeFavorite(comic: Comic) {
+    let newComic = this.comicService.allComicFavorites.find(
+      (item) => item.num === comic.num
     );
-    this.comicService.allComicFavorites = newFavoriteComics;
+    if (!newComic) {
+      this.favoritesWarning = 'Sorry this comic is not in your favorite list';
+    } else {
+      let newFavoriteComics = this.comicService.allComicFavorites.filter(
+        (comic: Comic) => comic.num !== newComic.num
+      );
+      this.comicService.allComicFavorites = newFavoriteComics;
+    }
   }
 }
