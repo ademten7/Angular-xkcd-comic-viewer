@@ -11,7 +11,7 @@
   --color-bg: white;
   --color-text: black;
 }
-[data-theme="dark"] {
+html[data-theme="dark"] {
   --color-bg: black;
   --color-text: white;
 }

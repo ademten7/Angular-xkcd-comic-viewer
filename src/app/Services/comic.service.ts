@@ -60,7 +60,6 @@ export class ComicService {
       'GET, PUT, DELETE ,POST'
     );
     header = header.append('Access-Control-Allow-Credentials', 'true');
-    header = header.append('Access-Control-Allow-Headers', 'Content-Type');
 
     return this.http
       .get(
@@ -84,7 +83,6 @@ export class ComicService {
       'GET, PUT, DELETE ,POST'
     );
     header = header.append('Access-Control-Allow-Credentials', 'true');
-    header = header.append('Access-Control-Allow-Headers', 'Content-Type');
 
     return this.http
       .get(

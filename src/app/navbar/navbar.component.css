@@ -2,6 +2,13 @@
   margin-top: 1em;
   display: flex;
   justify-content: space-around;
+  align-items: center;
+}
+.navbar-buttons {
+  display: flex;
+}
+.go-comics {
+  margin-left: 20px;
 }
 .btn-secondary:not(:disabled).active {
   border-bottom: 2.5px solid red;
@@ -18,4 +25,17 @@
   top: 0;
   right: 0;
   border-radius: 5px;
+}
+@media (max-width: 998px) {
+  .container {
+    flex-direction: column;
+  }
+}
+@media (max-width: 499px) {
+  .navbar-buttons {
+    flex-direction: column;
+  }
+  .navbar-buttons button {
+    margin-top: 10px;
+  }
 }
