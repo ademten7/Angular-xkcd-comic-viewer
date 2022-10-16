@@ -3,3 +3,6 @@
   display: flex;
   justify-content: space-around;
 }
+.btn-secondary:not(:disabled).active {
+  border-bottom: 2.5px solid red;
+}
