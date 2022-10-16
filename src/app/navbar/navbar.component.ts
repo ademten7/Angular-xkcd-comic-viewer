@@ -10,10 +10,19 @@ export class NavbarComponent implements OnInit {
   constructor(private comicService: ComicService) {}
 
   totalFavorites: number;
+  darkMode: boolean = false;
 
   ngOnInit(): void {}
   getTotalFavorites() {
     this.totalFavorites = this.comicService.allComicFavorites.length;
     return this.totalFavorites;
+  }
+
+  themeToggle() {
+    this.darkMode = !this.darkMode;
+    document.documentElement.setAttribute(
+      'data-theme',
+      this.darkMode ? 'dark' : 'light'
+    );
   }
 }
