@@ -28,6 +28,7 @@
       <h4>{{ comic.alt }}</h4>
     </div>
     <div>
+      <!--buttons-container-->
       <div class="buttons-container">
         <button
           (click)="getFirstComic(1)"
@@ -69,6 +70,7 @@
       <div *ngIf="warning" class="warning">
         <p>{{ warning }}</p>
       </div>
+      <!--Search By Id-->
       <div class="input-id">
         <h3>Search Comics by ID</h3>
         <div>

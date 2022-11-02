@@ -10,6 +10,7 @@
 :root {
   --color-bg: white;
   --color-text: black;
+  
 }
 html[data-theme="dark"] {
   --color-bg: black;

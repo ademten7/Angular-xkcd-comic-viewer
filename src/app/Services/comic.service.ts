@@ -15,24 +15,12 @@ export class ComicService {
 
   allComicFavorites: Comic[] = [];
 
-  /*
-  comics = [
-    {
-      num: 2685,
-      alt: '"Sorry, doctor, I\'m going to have to come in on a different day--I have another appointment that would be really hard to move, in terms of the kinetic energy requirements."',
-      img: 'https://imgs.xkcd.com/comics/2045.png',
-      title: '2045',
-    },
-  ];
-  */
-
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
-      // A client-side or network error occurred. Handle it accordingly.
+      // A client-side or network error occurred.
       console.error('An error occurred:', error.error);
     } else {
       // The backend returned an unsuccessful response code.
-      // The response body may contain clues as to what went wrong.
       console.error(
         `Backend returned code ${error.status}, body was: `,
         error.error
@@ -45,13 +33,6 @@ export class ComicService {
   }
 
   getComics() {
-    //const header = new HttpHeaders()
-    //.set('Access-Control-Allow-Origin', '*')
-    //.set('Content-Type', 'application/json')
-    //.set('Access-Control-Allow-Methods', 'GET, PUT, DELETE ,POST')
-    //.set('Access-Control-Allow-Credentials', 'true')
-    // .set('Access-Control-Allow-Headers', 'Content-Type');
-
     let header = new HttpHeaders();
     header = header.append('Access-Control-Allow-Origin', '*');
     header = header.append('Content-Type', 'application/json');
@@ -68,10 +49,7 @@ export class ComicService {
           headers: header,
         }
       )
-      .pipe(
-        retry(3), // retry a failed request up to 3 times
-        catchError(this.handleError) // then handle the error
-      );
+      .pipe(retry(3), catchError(this.handleError));
   }
 
   getComicsByNumber(id: number) {
@@ -93,9 +71,6 @@ export class ComicService {
           headers: header,
         }
       )
-      .pipe(
-        retry(3), // retry a failed request up to 3 times
-        catchError(this.handleError) // then handle the error
-      );
+      .pipe(retry(3), catchError(this.handleError));
   }
 }
